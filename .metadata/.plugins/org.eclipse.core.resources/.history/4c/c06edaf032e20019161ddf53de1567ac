@@ -1,0 +1,140 @@
+package basePakage;
+
+import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import org.junit.Assert;
+
+
+public class TestCaseClass extends Capablities
+	{
+		public void firstTestCase() throws MalformedURLException 
+			//1 .fill the form details and verify Toast error messages displayed appropriatly for wrong inputs
+			{
+				AndroidDriver<AndroidElement> driver = capabilities();
+				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+				
+				driver.findElementByAndroidUIAutomator("text(\"Female\")").click();
+				driver.findElementByXPath("//android.widget.TextView[@resource-id = 'android:id/text1']").click();
+				driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textMatches(\"" + "Austria" + "\").instance(0))")); 
+				driver.findElementByXPath("//*[@text = 'Austria']").click();
+				driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+				String Errmsg = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
+				//Assert is deprecated in JUnit 5 so use JUnit 4 and change the import from Junit.framework.Assert to org.junit.Assert , it will remove warning
+				Assert.assertEquals("Please enter your name", Errmsg);
+				System.out.println("Test Case Passed");
+				
+			}
+		
+		public void secondTestCase() throws MalformedURLException 
+			{
+			//2. Shop the items in the app by scrolling to specific product an add to cart
+				AndroidDriver<AndroidElement> driver = capabilities();
+				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			
+				driver.findElementByAndroidUIAutomator("text(\"Enter name here\")").sendKeys("enter name");
+				driver.findElementByAndroidUIAutomator("text(\"Female\")").click();
+				driver.findElementByXPath("//android.widget.TextView[@resource-id = 'android:id/text1']").click();
+				//driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).ScrollIntoView(text(\"India\"));");
+				driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textMatches(\"" + "Austria" + "\").instance(0))")); 
+				driver.findElementByXPath("//*[@text = 'Austria']").click();
+				driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+				driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"com.androidsample.generalstore:id/rvProductList\")).scrollIntoView(new UiSelector().textMatches(\"Jordan 6 Rings\").instance(0))"));
+				int count= driver.findElements(By.id("com.androidsample.generalstore:id/productName")).size();
+				for(int i=0;i<count;i++)
+					{
+						String text=driver.findElements(By.id("com.androidsample.generalstore:id/productName")).get(i).getText();
+						if(text.equalsIgnoreCase("Jordan 6 Rings"))
+							{
+								driver.findElements(By.id("com.androidsample.generalstore:id/productAddCart")).get(i).click();
+								break;
+							}
+					}
+				driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
+				String lastpageText = driver.findElement(By.id("com.androidsample.generalstore:id/productName")).getText();
+				Assert.assertEquals("Jordan 6 Rings", lastpageText);
+				
+			}
+		public void ThirdTestCase() throws MalformedURLException 
+			{
+				//Validate if the items selected in the page 2 are matching with items displayed in the checkout page 
+				String name_in_list = "Jordan 6 Rings";
+				AndroidDriver<AndroidElement> driver = capabilities();
+				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+				driver.findElementByAndroidUIAutomator("text(\"Enter name here\")").sendKeys("enter name");
+				driver.findElementByAndroidUIAutomator("text(\"Female\")").click();
+				driver.findElementByXPath("//android.widget.TextView[@resource-id = 'android:id/text1']").click();
+			//driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).ScrollIntoView(text(\"India\"));");
+				driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textMatches(\"" + "Austria" + "\").instance(0))")); 
+				driver.findElementByXPath("//*[@text = 'Austria']").click();
+				driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+				driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"com.androidsample.generalstore:id/rvProductList\")).scrollIntoView(new UiSelector().textMatches(\"Jordan 6 Rings\").instance(0))"));
+				int count= driver.findElements(By.id("com.androidsample.generalstore:id/productName")).size();
+				for(int i=0;i<count;i++)
+					{
+					String text=driver.findElements(By.id("com.androidsample.generalstore:id/productName")).get(i).getText();
+					if(text.equalsIgnoreCase("Jordan 6 Rings"))
+						{
+						driver.findElements(By.id("com.androidsample.generalstore:id/productAddCart")).get(i).click();
+						break;
+						}
+					}
+				driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
+				String lastpageText = driver.findElement(By.id("com.androidsample.generalstore:id/productName")).getText();
+				Assert.assertEquals("Jordan 6 Rings", lastpageText);
+			}
+		
+		public void fourthTestCase() throws MalformedURLException, InterruptedException 
+			{	// Validate the sum of two product matches with the total
+				String name_in_list = "Jordan 6 Rings";
+				AndroidDriver<AndroidElement> driver = capabilities();
+				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	
+				driver.findElementByAndroidUIAutomator("text(\"Enter name here\")").sendKeys("enter name");
+				driver.findElementByAndroidUIAutomator("text(\"Female\")").click();
+				driver.findElementByXPath("//android.widget.TextView[@resource-id = 'android:id/text1']").click();
+				driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textMatches(\"" + "Austria" + "\").instance(0))")); 
+				driver.findElementByXPath("//*[@text = 'Austria']").click();
+				driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+				Thread.sleep(2000);
+				driver.findElements(By.xpath("//android.widget.TextView[@resource-id = 'com.androidsample.generalstore:id/productAddCart']")).get(0).click();
+				driver.findElements(By.xpath("//android.widget.TextView[@resource-id = 'com.androidsample.generalstore:id/productAddCart']")).get(0).click();
+				driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
+				Thread.sleep(4000);
+				String amount1 = driver.findElements(By.xpath("//android.widget.TextView[@resource-id = 'com.androidsample.generalstore:id/productAddCart']")).get(0).getText();
+				String amount2 = driver.findElements(By.xpath("//android.widget.TextView[@resource-id = 'com.androidsample.generalstore:id/productAddCart']")).get(1).getText();
+				
+				amount1 = amount1.substring(1);
+				amount2 = amount2.substring(1);
+				
+				double amt1 = Double.parseDouble(amount1);
+				double amt2 = Double.parseDouble(amount2);
+				
+				double sum_of_products = amt1 + amt2 ;
+				
+				String total_amount_dispalyed = driver.findElement(By.xpath("//android.widget.TextView[@resource-id = 'com.androidsample.generalstore:id/totalAmountLbl']")).getText();
+				
+				total_amount_dispalyed = total_amount_dispalyed.substring(1);
+				double total = Double.parseDouble(total_amount_dispalyed);
+				
+				Assert.assertEquals(sum_of_products, total,0.01);
+				System.out.println("Test Case Passed");
+				
+				
+				
+
+				
+
+				
+				
+				
+				
+				
+			}
+	}

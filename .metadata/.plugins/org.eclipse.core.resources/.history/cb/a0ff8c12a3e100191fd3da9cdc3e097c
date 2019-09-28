@@ -1,0 +1,30 @@
+package basePakage;
+
+import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class TestCaseClass extends Capablities
+	{
+		public void firstTestCase() throws MalformedURLException 
+			//1 .fill the form details and verify Toast error messages displayed appropriatly for wrong inputs
+			{
+				AndroidDriver<AndroidElement> driver = capabilities();
+				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+				
+				driver.findElementByAndroidUIAutomator("text(\"Enter name here\")").sendKeys("enter name");
+				driver.findElementByAndroidUIAutomator("text(\"Female\")").click();
+				driver.findElementByXPath("//android.widget.TextView[@resource-id = 'android:id/text1']").click();
+				driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).ScrollIntoView(text(\"Argentina\"));");
+				driver.findElementByXPath("//android.widget.Button[@text = Let's Shop]");
+				driver.navigate().back();
+				
+				
+				
+				
+				
+				
+			}
+	}

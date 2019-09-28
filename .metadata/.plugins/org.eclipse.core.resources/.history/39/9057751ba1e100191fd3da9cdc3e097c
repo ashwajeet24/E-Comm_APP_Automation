@@ -1,0 +1,9 @@
+package basePakage;
+
+public class TestCaseClass extends Capablities
+	{
+		public void firstTestcase() 
+			{
+				
+			}
+	}
