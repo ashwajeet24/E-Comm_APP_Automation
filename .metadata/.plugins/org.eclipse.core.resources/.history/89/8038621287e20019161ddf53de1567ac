@@ -139,7 +139,6 @@ public class TestCaseClass extends Capablities
 		
 		public void fifthTestCase() throws MalformedURLException, InterruptedException 
 			{
-				//Hybrid app Testing
 				String name_in_list = "Jordan 6 Rings";
 				String Name = "";
 				AndroidDriver<AndroidElement> driver = capabilities();

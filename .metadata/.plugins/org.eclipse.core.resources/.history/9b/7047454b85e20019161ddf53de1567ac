@@ -8,10 +8,10 @@ public class MainClass extends TestCaseClass
 		public static void main(String[] args) throws MalformedURLException, InterruptedException 
 			{
 				TestCaseClass tc = new TestCaseClass();
-				tc.firstTestCase();
-				tc.secondTestCase();
-				tc.ThirdTestCase();
-				tc.fourthTestCase();
+				//tc.firstTestCase();
+				//tc.secondTestCase();
+				//tc.ThirdTestCase();
+				//tc.fourthTestCase();
 				tc.fifthTestCase();
 			}
 

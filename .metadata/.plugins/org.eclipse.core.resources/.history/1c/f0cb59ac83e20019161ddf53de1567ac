@@ -139,7 +139,6 @@ public class TestCaseClass extends Capablities
 		
 		public void fifthTestCase() throws MalformedURLException, InterruptedException 
 			{
-				//Hybrid app Testing
 				String name_in_list = "Jordan 6 Rings";
 				String Name = "";
 				AndroidDriver<AndroidElement> driver = capabilities();
@@ -172,14 +171,10 @@ public class TestCaseClass extends Capablities
 					if(!contextName.contains("Native Apps")) 
 						{
 							Name = contextName;
-							//System.out.println(Name);
+							System.out.println(Name);
 						}
 					}
 				
-				System.out.println(Name);
-				driver.context(Name);
-				driver.findElement(By.cssSelector("input[type='search']")).sendKeys("Hello WebView");
-				driver.findElement(By.cssSelector("button[aria-label='Google Search']")).click();
 				
 			}
 		

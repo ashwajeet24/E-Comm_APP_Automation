@@ -1,20 +1,13 @@
 package basePakage;
 
 import java.net.MalformedURLException;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.touch.LongPressOptions;
-import static io.appium.java_client.touch.offset.ElementOption.element;
-
 import org.junit.Assert;
 
 
@@ -134,54 +127,14 @@ public class TestCaseClass extends Capablities
 				System.out.println("Test Case Passed");
 				
 				
-			}
-		
-		
-		public void fifthTestCase() throws MalformedURLException, InterruptedException 
-			{
-				//Hybrid app Testing
-				String name_in_list = "Jordan 6 Rings";
-				String Name = "";
-				AndroidDriver<AndroidElement> driver = capabilities();
-				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+				
 
-				driver.findElementByAndroidUIAutomator("text(\"Enter name here\")").sendKeys("enter name");
-				driver.findElementByAndroidUIAutomator("text(\"Female\")").click();
-				driver.findElementByXPath("//android.widget.TextView[@resource-id = 'android:id/text1']").click();
-				driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textMatches(\"" + "Austria" + "\").instance(0))")); 
-				driver.findElementByXPath("//*[@text = 'Austria']").click();
-				driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
-				Thread.sleep(2000);
-				driver.findElements(By.xpath("//*[@text='ADD TO CART']")).get(0).click();
-				driver.findElements(By.xpath("//*[@text='ADD TO CART']")).get(0).click();
-				driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
-				Thread.sleep(6000);
-				WebElement checkbox = driver.findElement(By.className("android.widget.CheckBox"));
-				checkbox.click();
-				WebElement termsbutton = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton")); 
-				TouchAction touch = new TouchAction(driver);
-				touch.longPress(LongPressOptions.longPressOptions().withElement(element(termsbutton))).perform();
-				driver.findElement(By.xpath("//android.widget.Button[@text= 'CLOSE']")).click();
-				driver.findElement(By.xpath("//android.widget.Button[@text= 'Visit to the website to complete purchase']")).click();
 				
-				Thread.sleep(2000);
-				Set<String> context = driver.getContextHandles();
-				for(String contextName:context) 
-					{
-						
-					if(!contextName.contains("Native Apps")) 
-						{
-							Name = contextName;
-							//System.out.println(Name);
-						}
-					}
+
 				
-				System.out.println(Name);
-				driver.context(Name);
-				driver.findElement(By.cssSelector("input[type='search']")).sendKeys("Hello WebView");
-				driver.findElement(By.cssSelector("button[aria-label='Google Search']")).click();
+				
+				
+				
 				
 			}
-		
-		
 	}
