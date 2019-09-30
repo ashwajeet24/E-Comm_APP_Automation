@@ -1,17 +1,21 @@
 package basePakage;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.LongPressOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 
@@ -19,7 +23,11 @@ import org.junit.Assert;
 
 
 public class TestCaseClass extends Capablities
-	{
+	{	
+	
+	
+	
+		@Test
 		public void firstTestCase() throws MalformedURLException 
 			//1 .fill the form details and verify Toast error messages displayed appropriatly for wrong inputs
 			{
@@ -37,7 +45,7 @@ public class TestCaseClass extends Capablities
 				System.out.println("Test Case Passed");
 				
 			}
-		
+		@Test
 		public void secondTestCase() throws MalformedURLException 
 			{
 			//2. Shop the items in the app by scrolling to specific product an add to cart
@@ -67,6 +75,7 @@ public class TestCaseClass extends Capablities
 				Assert.assertEquals("Jordan 6 Rings", lastpageText);
 				
 			}
+		@Test
 		public void ThirdTestCase() throws MalformedURLException 
 			{
 				//Validate if the items selected in the page 2 are matching with items displayed in the checkout page 
@@ -96,7 +105,7 @@ public class TestCaseClass extends Capablities
 				String lastpageText = driver.findElement(By.id("com.androidsample.generalstore:id/productName")).getText();
 				Assert.assertEquals("Jordan 6 Rings", lastpageText);
 			}
-		
+		@Test
 		public void fourthTestCase() throws MalformedURLException, InterruptedException 
 			{	// Validate the sum of two product matches with the total
 				String name_in_list = "Jordan 6 Rings";
@@ -136,7 +145,7 @@ public class TestCaseClass extends Capablities
 				
 			}
 		
-		
+		@Test
 		public void fifthTestCase() throws MalformedURLException, InterruptedException 
 			{
 				//Hybrid app Testing
@@ -180,6 +189,15 @@ public class TestCaseClass extends Capablities
 				driver.context(Name);
 				driver.findElement(By.cssSelector("input[type='search']")).sendKeys("Hello WebView");
 				driver.findElement(By.cssSelector("button[aria-label='Google Search']")).click();
+				driver.pressKey(new KeyEvent(AndroidKey.BACK));
+				Thread .sleep(2000);
+				Set<String> context1 = driver.getContextHandles();
+				System.out.println(context1);
+				List<String> name = new ArrayList<String>(context1);
+				String ourappname= name.get(0);
+				System.out.println(ourappname);
+				
+				
 				
 			}
 		

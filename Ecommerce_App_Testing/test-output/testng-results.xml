@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="4" total="5" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="54278" started-at="2019-09-30T16:13:04 CDT" finished-at="2019-09-30T16:13:59 CDT">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="54278" started-at="2019-09-30T16:13:04 CDT" finished-at="2019-09-30T16:13:59 CDT">
+      <class name="basePakage.TestCaseClass">
+        <test-method status="PASS" signature="fifthTestCase()[pri:0, instance:basePakage.TestCaseClass@394e1a0f]" name="fifthTestCase" duration-ms="54211" started-at="2019-09-30T16:13:05 CDT" finished-at="2019-09-30T16:13:59 CDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fifthTestCase -->
+      </class> <!-- basePakage.TestCaseClass -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

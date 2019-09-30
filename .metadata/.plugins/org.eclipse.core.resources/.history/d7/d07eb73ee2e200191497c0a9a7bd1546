@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suit Name= "E-Commerce App Testing">
+<test name = "Native and Web app Testing">
+<classes>
+<class name = "basePackage.MainClass"/>
+</classes>
+</test>
+</suit>
