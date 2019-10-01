@@ -3,11 +3,7 @@
 <suite name="Suite">
   <test name="Test">
   <classes>
-  <class name ="basePakage.TestCaseClass">
-  		<methods>
-  			<include name = "fifthTestCase"/>
-  		</methods>
-  		</class>
+  <class name ="basePakage.TestCaseClass"/>
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

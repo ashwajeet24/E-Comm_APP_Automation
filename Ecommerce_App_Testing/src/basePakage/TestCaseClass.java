@@ -1,5 +1,9 @@
 package basePakage;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import io.appium.java_client.MobileBy;
@@ -19,15 +26,15 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.LongPressOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 
-import org.junit.Assert;
-
 
 public class TestCaseClass extends Capablities
 	{	
 	
+		
+		
+		
 	
-	
-		@Test
+		@Test(enabled = false)
 		public void firstTestCase() throws MalformedURLException 
 			//1 .fill the form details and verify Toast error messages displayed appropriatly for wrong inputs
 			{
@@ -41,11 +48,11 @@ public class TestCaseClass extends Capablities
 				driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
 				String Errmsg = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 				//Assert is deprecated in JUnit 5 so use JUnit 4 and change the import from Junit.framework.Assert to org.junit.Assert , it will remove warning
-				Assert.assertEquals("Please enter your name", Errmsg);
+				AssertJUnit.assertEquals("Please enter your name", Errmsg);
 				System.out.println("Test Case Passed");
 				
 			}
-		@Test
+		@Test(enabled = false)
 		public void secondTestCase() throws MalformedURLException 
 			{
 			//2. Shop the items in the app by scrolling to specific product an add to cart
@@ -72,10 +79,10 @@ public class TestCaseClass extends Capablities
 					}
 				driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
 				String lastpageText = driver.findElement(By.id("com.androidsample.generalstore:id/productName")).getText();
-				Assert.assertEquals("Jordan 6 Rings", lastpageText);
+				AssertJUnit.assertEquals("Jordan 6 Rings", lastpageText);
 				
 			}
-		@Test
+		@Test(enabled=false)
 		public void ThirdTestCase() throws MalformedURLException 
 			{
 				//Validate if the items selected in the page 2 are matching with items displayed in the checkout page 
@@ -103,9 +110,9 @@ public class TestCaseClass extends Capablities
 					}
 				driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
 				String lastpageText = driver.findElement(By.id("com.androidsample.generalstore:id/productName")).getText();
-				Assert.assertEquals("Jordan 6 Rings", lastpageText);
+				AssertJUnit.assertEquals("Jordan 6 Rings", lastpageText);
 			}
-		@Test
+		@Test(enabled=false)
 		public void fourthTestCase() throws MalformedURLException, InterruptedException 
 			{	// Validate the sum of two product matches with the total
 				String name_in_list = "Jordan 6 Rings";
@@ -139,13 +146,13 @@ public class TestCaseClass extends Capablities
 				total_amount_dispalyed = total_amount_dispalyed.substring(1);
 				double total = Double.parseDouble(total_amount_dispalyed);
 				
-				Assert.assertEquals(sum_of_products, total,0.01);
+				AssertJUnit.assertEquals(sum_of_products, total,0.01);
 				System.out.println("Test Case Passed");
 				
 				
 			}
 		
-		@Test
+		@Test(enabled=true)
 		public void fifthTestCase() throws MalformedURLException, InterruptedException 
 			{
 				//Hybrid app Testing
@@ -153,7 +160,7 @@ public class TestCaseClass extends Capablities
 				String Name = "";
 				AndroidDriver<AndroidElement> driver = capabilities();
 				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-
+				
 				driver.findElementByAndroidUIAutomator("text(\"Enter name here\")").sendKeys("enter name");
 				driver.findElementByAndroidUIAutomator("text(\"Female\")").click();
 				driver.findElementByXPath("//android.widget.TextView[@resource-id = 'android:id/text1']").click();
